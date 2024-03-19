@@ -2,6 +2,7 @@
 
 ## Pre-requisites
 
+- [x] A VM or a physical machine with Ubuntu 22.04
 - [x] Docker
 - [x] Docker Compose
 
