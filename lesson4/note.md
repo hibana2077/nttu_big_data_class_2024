@@ -10,6 +10,12 @@ Use hadoop to run below example:
 
 ## Steps
 
+### 0. Start docker compose
+
+```bash
+docker-compose up -d
+```
+
 ### 1. login to the hadoop master namenode
 
 use docker exec to login to the namenode container
