@@ -12,23 +12,37 @@ Use hadoop to run below example:
 
 ### 1. login to the hadoop master namenode
 
+use docker exec to login to the namenode container
+
+`exec` command is used to run a command in a running container.
+
+`-it` option is used to open an interactive terminal.
+
 ```bash
 docker exec -it lesson4_namenode_1 bash
 ```
 
 ### 2. Install curl wget and vim
 
+In container, run below command to install curl, wget and vim
+
+`apache/hadoop` image is based on `redhat` image, so we can use `yum` to install packages.
+
 ```bash
-sudo apt update && sudo apt install -y curl wget vim
+sudo apt update && sudo apt install -y curl wget neovim
 ```
 
 ### 3. Get wordcount example data
+
+`curl` command is used to download file from internet.
 
 ```bash
 curl https://raw.githubusercontent.com/brunoklein99/deep-learning-notes/master/shakespeare.txt -o shakespeare.txt
 ```
 
 ### 4. Check datanode status
+
+`hdfs dfsadmin -report` command is used to check datanode status.
 
 ```bash
 hdfs dfsadmin -report
@@ -95,3 +109,17 @@ hadoop fs -put  ./s_sort.txt /s_sort/input
 ```bash
 yarn jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar secondarysort /s_sort/input/s_sort.txt /s_sort/output/ss
 ```
+
+```bash
+hadoop fs -cat /s_sort/output/ss/part-r-00000
+```
+
+### 8. Exit container
+
+```bash
+exit
+```
+
+## References
+
+- [Hadoop MapReduce Examples](https://hadoop.apache.org/docs/r3.3.6/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
