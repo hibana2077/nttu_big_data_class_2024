@@ -22,3 +22,23 @@ curl -sSL https://get.docker.com | sh
 ```bash
 apt update && apt install -y docker-compose
 ```
+
+## Steps
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/hibana2077/nttu_big_data_class_2024.git
+```
+
+### 2. Change directory
+
+```bash
+cd big-data-class-2024
+```
+
+### 3. Enjoy
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
