@@ -35,7 +35,7 @@ In container, run below command to install curl, wget and vim
 `apache/hadoop` image is based on `redhat` image, so we can use `yum` to install packages.
 
 ```bash
-sudo apt update && sudo apt install -y curl wget neovim
+sudo yum update && sudo yum install -y curl wget neovim
 ```
 
 ### 3. Get wordcount example data
