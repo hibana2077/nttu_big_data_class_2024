@@ -1,9 +1,10 @@
-version: "2"
+version: "3"
 services:
     namenode:
       image: apache/hadoop:3
       hostname: namenode
       command: ["hdfs", "namenode"]
+      privileged: true
       ports:
         - 9870:9870
       env_file:
@@ -13,6 +14,7 @@ services:
     datanode_a:
       image: apache/hadoop:3
       command: ["hdfs", "datanode"]
+      privileged: true
       env_file:
         - ./config     
       hostname: datanode_a
@@ -20,6 +22,7 @@ services:
     datanode_b:
       image: apache/hadoop:3
       command: ["hdfs", "datanode"]
+      privileged: true
       env_file:
         - ./config
       hostname: datanode_b
@@ -27,6 +30,7 @@ services:
     datanode_c:
       image: apache/hadoop:3
       command: ["hdfs", "datanode"]
+      privileged: true
       env_file:
         - ./config
       hostname: datanode_c
@@ -34,6 +38,7 @@ services:
     datanode_d:
       image: apache/hadoop:3
       command: ["hdfs", "datanode"]
+      privileged: true
       env_file:
         - ./config
       hostname: datanode_d
@@ -42,14 +47,17 @@ services:
       image: apache/hadoop:3
       hostname: resourcemanager
       command: ["yarn", "resourcemanager"]
+      privileged: true
       ports:
          - 8088:8088
       env_file:
         - ./config
       volumes:
         - ./test.sh:/opt/test.sh
+        
     nodemanager:
       image: apache/hadoop:3
       command: ["yarn", "nodemanager"]
+      privileged: true
       env_file:
         - ./config
