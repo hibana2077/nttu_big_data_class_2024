@@ -25,3 +25,35 @@ docker exec -it lesson7_spark_1 bash
 ```bash
 spark-shell
 ```
+
+![Spark_shell](./assets/spark_shell.png)
+
+## 撰寫 Spark 程式
+
+```scala
+val data = Array(1, 2, 3, 4, 5)
+val distData = sc.parallelize(data)
+distData.reduce((a, b) => a + b)
+```
+
+## Scala 隨便介紹
+
+### List
+
+List 長度不可變，元素可變
+
+```scala
+val list = List(1, 2, 3, 4, 5)
+```
+
+### ListBuffer
+
+ListBuffer 長度可變，元素可變
+
+```scala
+val listBuffer = ListBuffer(1, 2, 3, 4, 5)
+```
+
+- append : +=
+- expend : ++=
+- remove : -=
