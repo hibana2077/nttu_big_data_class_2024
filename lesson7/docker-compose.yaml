@@ -1,63 +1,29 @@
-version: "3"
+# Copyright VMware, Inc.
+# SPDX-License-Identifier: APACHE-2.0
+
+version: '3'
+
 services:
-    namenode:
-      image: apache/hadoop:3
-      hostname: namenode
-      command: ["hdfs", "namenode"]
-      privileged: true
-      ports:
-        - 9870:9870
-      env_file:
-        - ./config
-      environment:
-          ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
-    datanode_a:
-      image: apache/hadoop:3
-      command: ["hdfs", "datanode"]
-      privileged: true
-      env_file:
-        - ./config     
-      hostname: datanode_a
-    
-    datanode_b:
-      image: apache/hadoop:3
-      command: ["hdfs", "datanode"]
-      privileged: true
-      env_file:
-        - ./config
-      hostname: datanode_b
-
-    datanode_c:
-      image: apache/hadoop:3
-      command: ["hdfs", "datanode"]
-      privileged: true
-      env_file:
-        - ./config
-      hostname: datanode_c
-
-    datanode_d:
-      image: apache/hadoop:3
-      command: ["hdfs", "datanode"]
-      privileged: true
-      env_file:
-        - ./config
-      hostname: datanode_d
-    
-    resourcemanager:
-      image: apache/hadoop:3
-      hostname: resourcemanager
-      command: ["yarn", "resourcemanager"]
-      privileged: true
-      ports:
-         - 8088:8088
-      env_file:
-        - ./config
-      volumes:
-        - ./test.sh:/opt/test.sh
-        
-    nodemanager:
-      image: apache/hadoop:3
-      command: ["yarn", "nodemanager"]
-      privileged: true
-      env_file:
-        - ./config
+  spark:
+    image: docker.io/bitnami/spark:3.5.1
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_USER=spark
+    ports:
+      - '8080:8080'
+  spark-worker:
+    image: docker.io/bitnami/spark:3.5.1
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark:7077
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_CORES=1
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_USER=spark
