@@ -38,6 +38,20 @@ distData.reduce((a, b) => a + b)
 
 ## Scala 隨便介紹
 
+## println
+
+就 println
+
+```scala
+println("Hello, World!")
+```
+
+## clear screen
+
+```scala
+print("\u001b[2J")
+```
+
 ### List
 
 List 長度不可變，元素可變
