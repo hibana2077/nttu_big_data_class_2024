@@ -71,3 +71,13 @@ val listBuffer = ListBuffer(1, 2, 3, 4, 5)
 - append : +=
 - expend : ++=
 - remove : -=
+
+## WordCount in Scala
+
+```scala
+val textFile = sc.textFile("file:///bitnami/spark/pg5000.txt")
+val counts = textFile.flatMap(line => line.split(" "))
+                     .map(word => (word, 1))
+                     .reduceByKey(_ + _)
+counts.foreach(println)
+```
