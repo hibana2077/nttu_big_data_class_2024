@@ -75,7 +75,7 @@ val listBuffer = ListBuffer(1, 2, 3, 4, 5)
 ## WordCount in Scala
 
 ```scala
-val textFile = sc.textFile("file:///bitnami/spark/pg5000.txt")
+val textFile = sc.textFile("file:///bitnami/spark/data/pg5000.txt")
 val counts = textFile.flatMap(line => line.split(" "))
                     .map(word => (word, 1))
                     .reduceByKey(_+_)
