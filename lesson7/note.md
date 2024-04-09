@@ -17,5 +17,11 @@ docker-compose up -d
 ## 成功後，進入 spark-master 容器
 
 ```bash
-docker exec -it spark-master bash
+docker exec -it lesson7_spark_1 bash
+```
+
+## 啟動 spark-shell
+
+```bash
+spark-shell
 ```
